@@ -1,0 +1,37 @@
+---
+title:
+author: "cjlortie & collaborators"
+date: "2018"
+output:
+  html_document:
+    theme: spacelab
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+![](./SJD.jpeg)  
+
+#A set of dataframes describing species sampled.
+
+###Purpose  
+To provide dataframes for joining to direct sampling data.
+
+###Plants  
+```{r, plants}
+library(tidyverse)
+#read in plant data
+plants <- read_csv("data/plants.csv")
+plants
+
+#Visual EDA and QA/QC
+ggplot(plants, aes(conservation.status, fill = region)) +
+  geom_bar() + 
+  facet_grid(~functional.group)
+
+ggplot(plants, aes(conservation.status, fill = region)) +
+  geom_bar() + 
+  facet_grid(~reproduction)
+```
